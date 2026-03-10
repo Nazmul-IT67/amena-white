@@ -19,11 +19,11 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users,email,' . Auth::id(),
+            'name'             => 'required|string|max:255',
+            'email'            => 'required|email|unique:users,email,' . Auth::id(),
+            'image'            => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'current_password' => 'nullable|string',
             'new_password'     => 'nullable|string|min:6|confirmed',
-            'image'  => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
         ]);
         
         $user = Auth::user();
